@@ -1,0 +1,320 @@
+import time
+from threading import Thread
+
+
+
+red = 101
+orange = 202
+green = 303
+master = red + orange + green
+white = "Mankind"
+state = "RED"
+
+
+while state != "DONE":
+
+    if state == "RED":
+        try:
+            code1 = int(input("Enter code red: "))
+            print("Processing...")
+            # time.sleep(4)
+        except:
+            print(" ")
+            continue
+
+        if code1 == red:
+            print("Code red correctly initiated")
+            print("Loading...")
+            state = 'ORANGE'
+            time.sleep(4)
+        else:
+            print("FAILURE TO ENTER CORRECT CODE RED")
+            state = 'DONE'
+
+    elif state == "ORANGE":
+        try:
+            code2 = int(input("Enter code orange: "))
+            print("Processing...")
+            time.sleep(4)
+        except:
+            print(" ")
+            continue
+
+        if code2 == orange:
+            print("Code orange correctly initiated")
+            print("Loading...")
+            state = "GREEN"
+            time.sleep(4)
+        else:
+            print("FAILURE TO ENTER CORRECT CODE ORANGE")
+            state = 'DONE'
+
+    elif state == "GREEN":
+        try:
+            code3 = int(input("Enter code green: "))
+            print("Processing...")
+            time.sleep(4)
+        except:
+            print(" ")
+            continue
+
+        if code3 == green:
+            print("Code green correctly initiated")
+            print("Loading...")
+            state = "MASTER"
+            time.sleep(4)
+        else:
+            print("FAILURE TO ENTER CORRECT CODE GREEN")
+            state = 'DONE'
+
+    elif state == "MASTER":
+        try:
+            code4 = int(input("Enter the master code: "))
+            print("Processing...")
+            time.sleep(4)
+        except:
+            print(" ")
+            continue
+
+
+
+        if code4 == master:
+            print("Master code correctly initiated")
+            print("Loading...")
+            time.sleep(2)
+            print("*******************************")
+            time.sleep(1)
+            print("ACCESS GRANTED")
+            time.sleep(4)
+            print("*******************************")
+            time.sleep(1)
+            print("Accessing the Fail-safe Sequence")
+            time.sleep(10)
+            print("Finial stage Fail-safe entered")
+            state = "WHITE1"
+        else:
+            print("FAILURE TO ENTER MASTER CODE")
+            state = 'DONE'
+
+    elif state == "WHITE1":
+
+        codewhite = input("Enter code WHITE: ")
+
+        if codewhite == white:
+            print("Code WHITE has been confirmed")
+            state = "WHITE2"
+        else:
+            print("FAILURE TO ENTER CODE WHITE")
+            time.sleep(4)
+            print("Missile launch aborted")
+            state = 'DONE'
+
+
+
+    elif state == "WHITE2":
+        codewhite = input("Enter code WHITE again: ")
+
+        if codewhite == white:
+            print("Code WHITE has been confirmed")
+            time.sleep(5)
+            print("Security measures have been bypassed")
+            state = 'GET_COUNTRY'
+        else:
+            print("FAILURE TO DUPLICATE CODE WHITE")
+            time.sleep(4)
+            print("Missile launch aborted")
+            state = 'DONE'
+
+    elif state == "GET_COUNTRY":
+        country = input("Enter selected country: ")
+
+        print("Country selected is {}, correct?".format(country))
+
+        check = input("Enter Y or N: ")
+
+        if check == "N":
+            print("Launch of ICBM aborted")
+            state = 'DONE'
+        else:
+            print("Country Verified")
+            state = "MISSILE_LAUNCH"
+
+
+    elif state == "MISSILE_LAUNCH":
+        print("Type LAUNCH to start countdown till ignition of ICBM")
+
+        launch = input(": ")
+
+        if launch == "LAUNCH":
+            print("Missile launch countdown confirmed")
+            state = "COUNTDOWN"
+        else:
+            print("Misslile launch countdown aborted")
+            time.sleep(2)
+            state = "GET_COUNTRY"
+
+
+
+    elif state == "COUNTDOWN":
+        print("10!")
+        time.sleep(1)
+        print("9!")
+        time.sleep(1)
+        print("8!")
+        time.sleep(1)
+        print("7!")
+        time.sleep(1)
+        print("6!")
+        time.sleep(1)
+        print("5!")
+        time.sleep(1)
+        print("4!")
+        time.sleep(1)
+        print("PRIMING ENGINES...")
+        time.sleep(1)
+        print("2!")
+        time.sleep(1)
+        print("1!")
+        time.sleep(1)
+        print("BLASTOFF!")
+        time.sleep(10)
+        print("ICBM seccessfully launched")
+        print("Course for missile to {} is being followed by global radar".format(country))
+        state = "ICBM_CONTACT"
+
+
+    elif state == "ICBM_CONTACT":
+        print("Code name for ICBM is: GOLDEN EAGLE")
+        print("To activate 2nd fail-safe and shutdown ICBM, type ICBM code name anytime")
+        print("Radar will update every 10,000 miles")
+
+
+        global_radar = input("Hit enter to continue tracking: ")
+        if global_radar != "GOLDEN EAGLE":
+            state = "UPDATE"
+        else:
+            print("ICBM shutting thrusters off and deactivating nucular war head")
+            state = "DONE"
+
+
+    elif state == "UPDATE":
+        print("Tracking...")
+        time.sleep(10)
+        print("Missile is 80,000 miles from {}".format(country))
+        global_radar = input("Hit enter to continue tracking: ")
+        if global_radar != "GOLDEN EAGLE":
+            state = "UPDATE2"
+        else:
+            print("ICBM shutting thrusters off and deactivating nucular war head")
+            state = "DONE"
+
+
+    elif state == "UPDATE2":
+        print("Tracking...")
+        time.sleep(10)
+        print("Missile is 70,000 miles from {}".format(country))
+        global_radar = input("Hit enter to continue tracking: ")
+        if global_radar != "GOLDEN EAGLE":
+            state = "UPDATE3"
+        else:
+            print("ICBM shutting thrusters off and deactivating nucular war head")
+            state = "DONE"
+
+
+    elif state == "UPDATE3":
+        print("Tracking...")
+        time.sleep(10)
+        print("Missile is 60,000 miles from {}".format(country))
+        global_radar = input("Hit enter to continue tracking: ")
+        if global_radar != "GOLDEN EAGLE":
+            state = "UPDATE4"
+        else:
+            print("ICBM shutting thrusters off and deactivating nucular war head")
+            state = "DONE"
+
+
+    elif state == "UPDATE4":
+        print("Tracking...")
+        time.sleep(10)
+        print("Missile is 50,000 miles from {}".format(country))
+        global_radar = input("Hit enter to continue tracking: ")
+        if global_radar != "GOLDEN EAGLE":
+            state = "UPDATE5"
+        else:
+            print("ICBM shutting thrusters off and deactivating nucular war head")
+            state = "DONE"
+
+
+    elif state == "UPDATE5":
+        print("Tracking...")
+        time.sleep(10)
+        print("Missile is 40,000 miles from {}".format(country))
+        global_radar = input("Hit enter to continue tracking: ")
+        if global_radar != "GOLDEN EAGLE":
+            print("Missile is half way to target: {}".format(country))
+            state = "UPDATE6"
+        else:
+            print("ICBM shutting thrusters off and deactivating nucular war head")
+            state = "DONE"
+
+
+    elif state == "UPDATE6":
+        print("Tracking...")
+        time.sleep(10)
+        print("Missile is 30,000 miles from {}".format(country))
+        global_radar = input("Hit enter to continue tracking: ")
+        if global_radar != "GOLDEN EAGLE":
+            state = "UPDATE7"
+        else:
+            print("ICBM shutting thrusters off and deactivating nucular war head")
+            state = "DONE"
+
+
+    elif state == "UPDATE7":
+        print("Tracking...")
+        time.sleep(10)
+        print("Missile is 20,000 miles from {}".format(country))
+        global_radar = input("Hit enter to continue tracking: ")
+        if global_radar != "GOLDEN EAGLE":
+            state = "UPDATE8"
+        else:
+            print("ICBM shutting thrusters off and deactivating nucular war head")
+            state = "DONE"
+
+
+    elif state == "UPDATE8":
+        print("Tracking...")
+        time.sleep(10)
+        print("Missile is 10,000 miles from {}".format(country))
+        print("ICBM code name is disabled, there is no deactivation of the of the 2nd fail-safe from here")
+        global_radar = input("Hit enter to continue tracking: ")
+        print("Missile contacts {} in 10 seconds".format(country))
+        state = "TARGET_DEMOLISH"
+
+
+
+    elif state == "TARGET_DEMOLISH":
+        print(10)
+        time.sleep(1)
+        print(9)
+        time.sleep(1)
+        print(8)
+        time.sleep(1)
+        print(7)
+        time.sleep(1)
+        print(6)
+        time.sleep(1)
+        print(5)
+        time.sleep(1)
+        print(4)
+        time.sleep(1)
+        print(3)
+        time.sleep(1)
+        print(2)
+        time.sleep(1)
+        print(1)
+        time.sleep(6)
+        print("ICBM successfully has made contact in {}".format(country))
+        time.sleep(4)
+        print("Target destroyed")
+        state = "DONE"
